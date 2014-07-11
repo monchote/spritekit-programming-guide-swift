@@ -67,9 +67,7 @@ class SpaceshipScene : SKScene {
 
     func addRock() {
         let rock = SKSpriteNode(color: SKColor.brownColor(), size: CGSize(width: 8, height: 8))
-        let position = CGPoint(x: Double(arc4random()) % self.size.width, y: self.size.height - 50)
-        println(position)
-        rock.position = position
+        rock.position = CGPoint(x: Double(arc4random()) % self.size.width, y: self.size.height)
         rock.name = ROCK_NODE_NAME
         rock.physicsBody = SKPhysicsBody(rectangleOfSize: rock.size)
         rock.physicsBody.usesPreciseCollisionDetection = true
