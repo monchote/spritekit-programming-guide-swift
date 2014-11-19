@@ -11,7 +11,7 @@ class SpaceshipScene : SKScene {
 
     var contentCreated = false
 
-    override func didMoveToView(view: SKView!) {
+    override func didMoveToView(view: SKView) {
         if !contentCreated {
             createContents()
             contentCreated = true
@@ -36,7 +36,7 @@ class SpaceshipScene : SKScene {
     func newSpaceship() -> SKNode {
         let hull = SKSpriteNode(color: UIColor.grayColor(), size: CGSize(width: 64, height: 32))
         hull.physicsBody = SKPhysicsBody(rectangleOfSize: hull.size)
-        hull.physicsBody.dynamic = false
+        hull.physicsBody?.dynamic = false;
 
         let light1 = newLight()
         light1.position = CGPoint(x: -28, y: 6)
@@ -67,17 +67,17 @@ class SpaceshipScene : SKScene {
 
     func addRock() {
         let rock = SKSpriteNode(color: SKColor.brownColor(), size: CGSize(width: 8, height: 8))
-        rock.position = CGPoint(x: Double(arc4random()) % self.size.width, y: self.size.height)
+        rock.position = CGPoint(x: CGFloat(arc4random()) % self.size.width, y: self.size.height)
         rock.name = ROCK_NODE_NAME
         rock.physicsBody = SKPhysicsBody(rectangleOfSize: rock.size)
-        rock.physicsBody.usesPreciseCollisionDetection = true
+        rock.physicsBody?.usesPreciseCollisionDetection = true
         self.addChild(rock)
     }
 
     override func didSimulatePhysics() {
         var toRemove = [SKNode]()
         self.enumerateChildNodesWithName(ROCK_NODE_NAME) {
-            node, stop in if node.position.y < 0 { toRemove += node }
+            node, stop in if node.position.y < 0 { toRemove.append(node) }
         }
         for node in toRemove {
             node.removeFromParent()
