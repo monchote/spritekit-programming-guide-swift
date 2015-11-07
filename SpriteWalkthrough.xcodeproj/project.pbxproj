@@ -163,6 +163,8 @@
 		8BC2280C196EC5170013CE43 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Twitter;
 				TargetAttributes = {
